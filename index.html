@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Електронний Навігатор Військовослужбовця</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f8fafc;
+            --accent-red: #ef4444;
+            --accent-yellow: #eab308;
+            --accent-green: #22c55e;
+            --accent-blue: #3b82f6;
+            --border-color: #334155;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 16px;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            padding: 12px 0;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 16px;
+        }
+
+        .nav-back-btn {
+            display: inline-block;
+            background: var(--card-bg);
+            color: var(--accent-blue);
+            border: 1px solid var(--border-color);
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-bottom: 16px;
+            text-decoration: none;
+        }
+
+        /* Стилі Головного Меню */
+        .hub-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .hub-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 16px;
+            cursor: pointer;
+            transition: transform 0.2s, border-color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .hub-card:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-2px);
+        }
+
+        .hub-icon {
+            font-size: 2em;
+        }
+
+        .hub-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 2px;
+        }
+
+        .hub-desc {
+            font-size: 0.85em;
+            color: #94a3b8;
+        }
+
+        /* Перемикання Вкладок */
+        .page-view {
+            display: none;
+        }
+
+        .page-view.active {
+            display: block;
+        }
+
+        /* Стилі Інтерактивного Хабу */
+        .alert-box {
+            background-color: rgba(239, 68, 68, 0.15);
+            border: 2px solid var(--accent-red);
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .role-selector {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .role-btn {
+            flex: 1;
+            padding: 10px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.85em;
+        }
+
+        .role-btn.active {
+            background: var(--accent-blue);
+            border-color: #60a5fa;
+        }
+
+        details {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 14px 16px;
+            font-weight: bold;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .step-list {
+            padding: 12px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .checkbox-item.red { background: rgba(239, 68, 68, 0.2); }
+        .checkbox-item.yellow { background: rgba(234, 179, 8, 0.2); }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            accent-color: var(--accent-green);
+            cursor: pointer;
+        }
+
+        .checkbox-item.done {
+            opacity: 0.4;
+            text-decoration: line-through;
+            background: rgba(255, 255, 255, 0.05) !important;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: var(--border-color);
+            border-radius: 4px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--accent-green);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ================= ГОЛОВНЕ МЕНЮ ================= -->
+    <div id="home-page" class="page-view active">
+        <div class="header">
+            <h1>🪖 Навігатор Військовослужбовця</h1>
+            <p>Оберіть розділ для швидкого вирішення вашого питання</p>
+        </div>
+
+        <div class="hub-grid">
+            <div class="hub-card" onclick="openPage('hub1')">
+                <div class="hub-icon">🚪</div>
+                <div>
+                    <div class="hub-title">Хаб 1. Я тільки прибув у частину</div>
+                    <div class="hub-desc">Маршрут прибуття, документи, анкети, тест «Адаптивність-200»</div>
+                </div>
+            </div>
+
+            <div class="hub-card" onclick="openPage('hub2')">
+                <div class="hub-icon">🏥</div>
+                <div>
+                    <div class="hub-title">Хаб 2. Здоров'я, ВЛК та поранення</div>
+                    <div class="hub-desc">Направлення на ВЛК, медична допомога, дії при пораненні</div>
+                </div>
+            </div>
+
+            <div class="hub-card" onclick="openPage('hub3')">
+                <div class="hub-icon">🧠</div>
+                <div>
+                    <div class="hub-title">Хаб 3. Психологічна підтримка (ППП)</div>
+                    <div class="hub-desc">Контакти психолога, підтримка, рівні права, розвантаження</div>
+                </div>
+            </div>
+
+            <div class="hub-card" onclick="openPage('hub4')">
+                <div class="hub-icon">🌴</div>
+                <div>
+                    <div class="hub-title">Хаб 4. Відпустки та сімейні обставини</div>
+                    <div class="hub-desc">Види відпусток, алгоритм подачі рапорту, сімейні питання</div>
+                </div>
+            </div>
+
+            <div class="hub-card" onclick="openPage('hub5')">
+                <div class="hub-icon">⚖️</div>
+                <div>
+                    <div class="hub-title">Хаб 5. Права, рапорти та юридична допомога</div>
+                    <div class="hub-desc">Шаблони рапортів, захист прав, службові розслідування</div>
+                </div>
+            </div>
+
+            <div class="hub-card" onclick="openPage('hub6')">
+                <div class="hub-icon">💳</div>
+                <div>
+                    <div class="hub-title">Хаб 6. Фінанси, виплати та контракти</div>
+                    <div class="hub-desc">Грошове забезпечення, довідки, оздоровчі, заміна банківського рахунку</div>
+                </div>
+            </div>
+
+            <div class="hub-card" onclick="openPage('hub7')">
+                <div class="hub-icon">📞</div>
+                <div>
+                    <div class="hub-title">Хаб 7. Контакти та гарячі лінії</div>
+                    <div class="hub-desc">Телефони служб частини, МОУ, ГШ, ВСП, юридична допомога</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ================= ХАБ 1 ================= -->
+    <div id="hub1" class="page-view">
+        <button class="nav-back-btn" onclick="openPage('home-page')">← Головне меню</button>
+
+        <div class="header">
+            <h1>🚪 Хаб 1. Я тільки прибув у частину</h1>
+        </div>
+
+        <div class="alert-box">
+            ⛔ СУВОРО ЗАБОРОНЕНО: Новоприбулому військовослужбовцю заборонено самостійно пересуватися по Штабу частини та службах. Усі обходи здійснюються ВИКЛЮЧНО У СУПРОВОДІ командира.
+        </div>
+
+        <div class="role-selector">
+            <button class="role-btn active" onclick="filterRole('all')">👁️ Усі кроки</button>
+            <button class="role-btn" onclick="filterRole('soldier')">👤 Новоприбулий</button>
+            <button class="role-btn" onclick="filterRole('commander')">🪖 Командир</button>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; font-size: 0.85em; margin-bottom: 4px;">
+            <span>Прогрес виконання:</span>
+            <span id="progress-text">0%</span>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+
+        <!-- ЕТАП 1 -->
+        <details open>
+            <summary>📍 ЕТАП 1: Документи та первинна ідентифікація</summary>
+            <div class="step-list">
+                <label class="checkbox-item red" data-role="soldier">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>1.1 (БІЄЦЬ):</b> Надати оригінали основних документів (Паспорт/ID, ІПН, Військовий квиток, Припис, Витяг з наказу, 4 атестати)</span>
+                </label>
+                <label class="checkbox-item yellow" data-role="soldier">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>1.2 (БІЄЦЬ):</b> Надати додаткові оригінали за наявності (УБД, посвідчення водія, ВЛК, Форма 6, свідоцтва про шлюб/дітей)</span>
+                </label>
+                <label class="checkbox-item red" data-role="commander">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>1.3 (КОМАНДИР):</b> Звірити оригінали документів, перевірити підстави зарахування та 4 атестати</span>
+                </label>
+                <label class="checkbox-item red" data-role="commander">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>1.4 (КОМАНДИР):</b> Зробити повний комплект якісних копій усіх документів бійця</span>
+                </label>
+            </div>
+        </details>
+
+        <!-- ЕТАП 2 -->
+        <details>
+            <summary>📍 ЕТАП 2: Електронні реєстри, IBAN та зв'язок</summary>
+            <div class="step-list">
+                <label class="checkbox-item red" data-role="soldier">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>2.1 (БІЄЦЬ):</b> Згенерувати в банківському застосунку довідку з реквізитами рахунку (IBAN) для ЗП</span>
+                </label>
+                <label class="checkbox-item red" data-role="soldier">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>2.2 (БІЄЦЬ):</b> Підписати роздруковану довідку від руки: «Реквізити вірні. [Дата], [Підпис], [ПІБ]»</span>
+                </label>
+                <label class="checkbox-item red" data-role="soldier">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>2.3 (БІЄЦЬ):</b> Записати у телефон номери телефонів вертикалі командування</span>
+                </label>
+            </div>
+        </details>
+
+        <!-- ЕТАП 3 -->
+        <details>
+            <summary>📍 ЕТАП 3: Анкети та тест «Адаптивність-200»</summary>
+            <div class="step-list">
+                <label class="checkbox-item red" data-role="commander">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>3.1 (КОМАНДИР):</b> Проінструктувати бійця щодо заповнення анкет</span>
+                </label>
+                <label class="checkbox-item red" data-role="soldier">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>3.2 (БІЄЦЬ):</b> Пройти онлайн-тест «Адаптивність-200»</span>
+                </label>
+                <label class="checkbox-item red" data-role="commander">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>3.3 (КОМАНДИР):</b> Доповісти підрозділу ППП про проходження тесту бійцем</span>
+                </label>
+            </div>
+        </details>
+    </div>
+
+    <!-- ================= ЗАГОТОВКИ ДЛЯ ХАБІВ 2–7 ================= -->
+    <div id="hub2" class="page-view">
+        <button class="nav-back-btn" onclick="openPage('home-page')">← Головне меню</button>
+        <h2>🏥 Хаб 2. Здоров'я, ВЛК та поранення</h2>
+        <p>Розділ у процесі наповнення матеріалами...</p>
+    </div>
+
+    <div id="hub3" class="page-view">
+        <button class="nav-back-btn" onclick="openPage('home-page')">← Головне меню</button>
+        <h2>🧠 Хаб 3. Психологічна підтримка (ППП)</h2>
+        <p>Розділ у процесі наповнення матеріалами...</p>
+    </div>
+
+    <div id="hub4" class="page-view">
+        <button class="nav-back-btn" onclick="openPage('home-page')">← Головне меню</button>
+        <h2>🌴 Хаб 4. Відпустки та сімейні обставини</h2>
+        <p>Розділ у процесі наповнення матеріалами...</p>
+    </div>
+
+    <div id="hub5" class="page-view">
+        <button class="nav-back-btn" onclick="openPage('home-page')">← Головне меню</button>
+        <h2>⚖️ Хаб 5. Права, рапорти та юридична допомога</h2>
+        <p>Розділ у процесі наповнення матеріалами...</p>
+    </div>
+
+    <div id="hub6" class="page-view">
+        <button class="nav-back-btn" onclick="openPage('home-page')">← Головне меню</button>
+        <h2>💳 Хаб 6. Фінанси, виплати та контракти</h2>
+        <p>Розділ у процесі наповнення матеріалами...</p>
+    </div>
+
+    <div id="hub7" class="page-view">
+        <button class="nav-back-btn" onclick="openPage('home-page')">← Головне меню</button>
+        <h2>📞 Хаб 7. Контакти та гарячі лінії</h2>
+        <p>Розділ у процесі наповнення матеріалами...</p>
+    </div>
+
+</div>
+
+<script>
+    // Навігація між сторінками (Хабами)
+    function openPage(pageId) {
+        document.querySelectorAll('.page-view').forEach(page => {
+            page.classList.remove('active');
+        });
+        document.getElementById(pageId).classList.add('active');
+        window.scrollTo(0, 0);
+    }
+
+    // Збереження чек-боксів Хабу 1 у локальній пам'яті телефону
+    document.addEventListener("DOMContentLoaded", () => {
+        const checkboxes = document.querySelectorAll('#hub1 input[type="checkbox"]');
+        checkboxes.forEach((cb, index) => {
+            const state = localStorage.getItem('hub1_step_' + index);
+            if (state === 'true') {
+                cb.checked = true;
+                cb.closest('.checkbox-item').classList.add('done');
+            }
+            cb.addEventListener('change', (e) => {
+                localStorage.setItem('hub1_step_' + index, e.target.checked);
+                if(e.target.checked) {
+                    cb.closest('.checkbox-item').classList.add('done');
+                } else {
+                    cb.closest('.checkbox-item').classList.remove('done');
+                }
+                updateProgress();
+            });
+        });
+        updateProgress();
+    });
+
+    function updateProgress() {
+        const all = document.querySelectorAll('#hub1 input[type="checkbox"]');
+        const checked = document.querySelectorAll('#hub1 input[type="checkbox"]:checked');
+        const percentage = Math.round((checked.length / all.length) * 100) || 0;
+        
+        document.getElementById('progress-fill').style.width = percentage + '%';
+        document.getElementById('progress-text').innerText = percentage + '%';
+    }
+
+    function filterRole(role) {
+        document.querySelectorAll('.role-btn').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+
+        const items = document.querySelectorAll('#hub1 .checkbox-item');
+        items.forEach(item => {
+            if (role === 'all' || item.dataset.role === role) {
+                item.style.display = 'flex';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
