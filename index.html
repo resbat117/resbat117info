@@ -242,7 +242,7 @@
                 <div class="hub-icon">🚪</div>
                 <div>
                     <div class="hub-title">1. Я тільки прибув у частину</div>
-                    <div class="hub-desc">Маршрутна карта прибуття, документы, анкети, тест «Адаптивність-200»</div>
+                    <div class="hub-desc">Маршрутна карта прибуття, документи, анкети, тест «Адаптивність-200»</div>
                 </div>
             </div>
 
@@ -286,4 +286,390 @@
                 </div>
             </div>
 
-            <div class="hub-card" onclick="openPage('hub7')
+            <div class="hub-card" onclick="openPage('hub7')">
+                <div class="hub-icon">📞</div>
+                <div>
+                    <div class="hub-title">7. Контакти та гарячі лінії</div>
+                    <div class="hub-desc">Офіційні гарячі лінії МОУ, ГШ, ВСП, чат-боти та юридична допомога</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ================= ХАБ 1 ================= -->
+    <div id="hub1" class="page-view">
+        <button class="nav-back-btn" onclick="openPage('home-page')">← Головне меню</button>
+
+        <div class="header">
+            <h1>🚪 1. Я тільки прибув у частину</h1>
+        </div>
+
+        <div class="alert-box">
+            ⛔ СУВОРО ЗАБОРОНЕНО: Новоприбулому військовослужбовцю заборонено самостійно пересуватися по Штабу частини, Медичному пункту та службах. Усі обходи здійснюються ВИКЛЮЧНО У СУПРОВОДІ командира або призначеного сержанта[cite: 3].
+        </div>
+
+        <div class="role-selector">
+            <button class="role-btn active" onclick="filterRole('all')">👁️ Усі кроки</button>
+            <button class="role-btn" onclick="filterRole('soldier')">👤 Новоприбулий</button>
+            <button class="role-btn" onclick="filterRole('commander')">🪖 Командир</button>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; font-size: 0.85em; margin-bottom: 4px;">
+            <span>Прогрес виконання:</span>
+            <span id="progress-text">0%</span>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+
+        <!-- ЕТАП 1 -->
+        <details open>
+            <summary>📍 ЕТАП 1: Документи та первинна ідентифікація</summary>
+            <div class="step-list">
+                <label class="checkbox-item red" data-role="soldier">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>1.1 (БІЄЦЬ):</b> Надати оригінали основних документів (Паспорт/ID, ІПН, Військовий квиток, Припис, Витяг з наказу, 4 атестати: РАО, Грошовий, Речовий, Прод)[cite: 3].</span>
+                </label>
+                <label class="checkbox-item yellow" data-role="soldier">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>1.2 (БІЄЦЬ):</b> Надати додаткові оригінали за наявності (УБД, посвідчення водія, рішення ВЛК, Форма 6, свідоцтва про шлюб/дітей)[cite: 3].</span>
+                </label>
+                <label class="checkbox-item red" data-role="commander">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>1.3 (КОМАНДИР):</b> Звірити оригінали документів, перевірити підстави зарахування та 4 атестати[cite: 3].</span>
+                </label>
+                <label class="checkbox-item yellow" data-role="commander">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>1.4 (КОМАНДИР):</b> Зафіксувати наявність чи відсутність УБД, ВЛК, водійського посвідчення, Форми 6[cite: 3].</span>
+                </label>
+                <label class="checkbox-item red" data-role="commander">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>1.5 (КОМАНДИР):</b> Зробити повний комплект якісних копій усіх документів бійця[cite: 3].</span>
+                </label>
+            </div>
+        </details>
+
+        <!-- ЕТАП 2 -->
+        <details>
+            <summary>📍 ЕТАП 2: Електронні реєстри, IBAN та зв'язок</summary>
+            <div class="step-list">
+                <label class="checkbox-item red" data-role="soldier">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>2.1 (БІЄЦЬ):</b> Згенерувати в банківському застосунку довідку з реквізитами рахунку (IBAN) для виплати ГЗ[cite: 3].</span>
+                </label>
+                <label class="checkbox-item red" data-role="soldier">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>2.2 (БІЄЦЬ):</b> Підписати роздруковану довідку від руки: <i>«Реквізити вірні. [Дата], [Підпис], [ПІБ]»</i>[cite: 3].</span>
+                </label>
+                <label class="checkbox-item yellow" data-role="soldier">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>2.3 (БІЄЦЬ):</b> За потреби сформувати витяг про прописку з додатка «Дія»[cite: 3].</span>
+                </label>
+                <label class="checkbox-item red" data-role="soldier">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>2.4 (БІЄЦЬ):</b> Записати у телефон номери телефонів вертикалі командування (командир відділення, взводу, роти, сержант з МТЗ)[cite: 3].</span>
+                </label>
+                <label class="checkbox-item yellow" data-role="soldier">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>2.5 (БІЄЦЬ):</b> Перевірити наявність при собі списку особистих речей першої потреби (спальник, гігієна, білизна)[cite: 3].</span>
+                </label>
+            </div>
+        </details>
+
+        <!-- ЕТАП 3 -->
+        <details>
+            <summary>📍 ЕТАП 3: Анкети та тест «Адаптивність-200»</summary>
+            <div class="step-list">
+                <label class="checkbox-item red" data-role="commander">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>3.1 (КОМАНДИР):</b> Проінструктувати бійця щодо заповнення Анкети прибулих та Картки соц-дем вивчення[cite: 3].</span>
+                </label>
+                
+                <label class="checkbox-item red" data-role="soldier">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <div>
+                        <b>3.2 (БІЄЦЬ):</b> Заповнити <b>Анкету прибулого військовослужбовця</b> (для Штабу)[cite: 3].
+                        <details style="margin-top:8px;">
+                            <summary style="font-size:0.85em; color:var(--accent-blue);">📄 Переглянути структуру Анкети Штабу</summary>
+                            <div class="doc-preview">
+1. ПІБ, Звання, Наказ про присвоєння
+2. Паспорт, ІПН, Телефон, Прописка/Проживання
+3. Освіта, ВОС, Військовий квиток, ТЦК та СП
+4. Досвід ЗСУ, УБД, АТО/ООС, Поранення, ВЛК
+5. Атестати (РАО, Грошовий, Речовий, Прод)
+6. Контакти 2 близьких родичів
+7. Відмітки про інструктажі (ТБ, Пожежна, Корупція, УБД, Медпункт)
+                            </div>
+                        </details>
+                    </div>
+                </label>
+
+                <label class="checkbox-item red" data-role="soldier">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <div>
+                        <b>3.3 (БІЄЦЬ):</b> Заповнити <b>Картку соціально-демографічного вивчення</b> (для підрозділу/ППП)[cite: 3].
+                        <details style="margin-top:8px;">
+                            <summary style="font-size:0.85em; color:var(--accent-blue);">📄 Переглянути структуру Картки Соц-Дем</summary>
+                            <div class="doc-preview">
+• Розміри одягу, взуття, головного убору
+• Статус ВПО, Діти до 18 років, Батько/мати-одиначка
+• Розміщення, зброя, ДНК-матеріал, ID Армія+
+• Розділ командира: індивідуальні бесіди, характеристика
+                            </div>
+                        </details>
+                    </div>
+                </label>
+
+                <label class="checkbox-item red" data-role="soldier">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>3.4 (БІЄЦЬ):</b> Олівцем на звороті Анкети Штабу зробити примітки щодо жетона (є/немає, номер) та складання ДНК (є/немає, де і коли)[cite: 3].</span>
+                </label>
+
+                <label class="checkbox-item red" data-role="soldier">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <div>
+                        <b>3.5 (БІЄЦЬ):</b> Пройти онлайн-тест <b>«Адаптивність-200»</b>[cite: 3].
+                        <br>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSc3IjFQJDaUCzULP5wQAyYI0B90mLfOf9oZGSkS8Y7y_RsQUA/viewform" target="_blank" class="btn-link">📝 Відкрити Google Форму тесту</a>
+                    </div>
+                </label>
+
+                <label class="checkbox-item red" data-role="commander">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>3.6 (КОМАНДИР):</b> Доповісти підрозділу ППП про проходження бійцем тесту «Адаптивність-200»[cite: 3].</span>
+                </label>
+
+                <label class="checkbox-item red" data-role="commander">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>3.7 (КОМАНДИР):</b> Забрати заповнену Соціально-демографічну анкету та помістити її в архів підрозділу[cite: 3].</span>
+                </label>
+            </div>
+        </details>
+
+        <!-- ЕТАП 4 -->
+        <details>
+            <summary>📍 ЕТАП 4: Організований обхід служб (У супроводі)</summary>
+            <div class="step-list">
+                <label class="checkbox-item red" data-role="commander">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>4.1 (СУПРОВІД):</b> Пройти інструктажі: з охорони праці, ТБ, пожежної безпеки, протидії корупції та доброчесності[cite: 3].</span>
+                </label>
+                <label class="checkbox-item yellow" data-role="commander">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>4.2 (СУПРОВІД):</b> Відвідати відповідального за напрямок УБД[cite: 3].</span>
+                </label>
+                <label class="checkbox-item red" data-role="commander">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>4.3 (СУПРОВІД):</b> Відвідати Медичний пункт для первинного огляду та відмітки чергового медика[cite: 3].</span>
+                </label>
+                <label class="checkbox-item red" data-role="commander">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>4.4 (СУПРОВІД):</b> Відвідати підрозділ ППП (психолог / соціальний супровід / рівні права та гендерний радник)[cite: 3].</span>
+                </label>
+                <label class="checkbox-item red" data-role="commander">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>4.5 (КОМАНДИР):</b> Перевірити наявність усіх підписів та відміток в Анкеті Штабу[cite: 3].</span>
+                </label>
+            </div>
+        </details>
+
+        <!-- ЕТАП 5 -->
+        <details>
+            <summary>📍 ЕТАП 5: Фінальне оформлення в Штабі</summary>
+            <div class="step-list">
+                <label class="checkbox-item red" data-role="commander">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>5.1 (КОМАНДИР):</b> Сформувати папку документів (оригінали, копії, 4 атестати, банківський IBAN, обхідна анкета з підписами)[cite: 3].</span>
+                </label>
+                <label class="checkbox-item red" data-role="commander">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>5.2 (КОМАНДИР):</b> Особисто разом із бійцем здати сформовану папку в Штаб[cite: 3].</span>
+                </label>
+            </div>
+        </details>
+
+        <!-- ЕТАП 6 -->
+        <details>
+            <summary>📍 ЕТАП 6: МТЗ, побут та адаптація/карантин</summary>
+            <div class="step-list">
+                <label class="checkbox-item red" data-role="commander">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>6.1 (КОМАНДИР):</b> Провести бійця до сержанта з МТЗ / старшини роти для перевірки/видачі речового майна та інвентарю[cite: 3].</span>
+                </label>
+                <label class="checkbox-item yellow" data-role="soldier">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>6.2 (КОМАНДИР/БІЄЦЬ):</b> У разі відсутності спальника, гігієнічних засобів чи форми — оформити заявку на видачу[cite: 3].</span>
+                </label>
+                <label class="checkbox-item red" data-role="commander">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>6.3 (КОМАНДИР):</b> Розмістити військовослужбовця в розташуванні та довести розпорядок дня[cite: 3].</span>
+                </label>
+                <label class="checkbox-item red" data-role="commander">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <div>
+                        <b>6.4 (КОМАНДИР):</b> Ознайомити бійця з режимом <b>первинної адаптації / карантину на перший тиждень</b>[cite: 3]:
+                        <ul style="margin: 4px 0 0 16px; padding:0; font-size:0.9em; color:#cbd5e1;">
+                            <li>Обмеження самостійного виходу за територію[cite: 3]</li>
+                            <li>Первинний контроль психологічного стану та фізичного самопочуття[cite: 3]</li>
+                            <li>Входження у службовий ритм, вивчення обов'язків та закріпленої зброї/майна[cite: 3]</li>
+                        </ul>
+                    </div>
+                </label>
+            </div>
+        </details>
+    </div>
+
+    <!-- ================= ХАБ 2 ================= -->
+    <div id="hub2" class="page-view">
+        <button class="nav-back-btn" onclick="openPage('home-page')">← Головне меню</button>
+        <h2>🏥 2. Я захворів / Поранення / Потрібно на ВЛК</h2>
+        <p>Розділ у процесі наповнення матеріалами...</p>
+    </div>
+
+    <!-- ================= ХАБ 3 ================= -->
+    <div id="hub3" class="page-view">
+        <button class="nav-back-btn" onclick="openPage('home-page')">← Головне меню</button>
+        <h2>🧠 3. Мені важко психологічно / Кепсько почуваюся</h2>
+        <p>Розділ у процесі наповнення матеріалами...</p>
+    </div>
+
+    <!-- ================= ХАБ 4 ================= -->
+    <div id="hub4" class="page-view">
+        <button class="nav-back-btn" onclick="openPage('home-page')">← Головне меню</button>
+        <h2>🌴 4. Хочу у відпустку / Сімейні обставини</h2>
+        <p>Розділ у процесі наповнення матеріалами...</p>
+    </div>
+
+    <!-- ================= ХАБ 5 ================= -->
+    <div id="hub5" class="page-view">
+        <button class="nav-back-btn" onclick="openPage('home-page')">← Головне меню</button>
+        <h2>⚖️ 5. У мене конфлікт / Порушують мої права</h2>
+        <p>Розділ у процесі наповнення матеріалами...</p>
+    </div>
+
+    <!-- ================= ХАБ 6 ================= -->
+    <div id="hub6" class="page-view">
+        <button class="nav-back-btn" onclick="openPage('home-page')">← Головне меню</button>
+        <h2>💰 6. Питання по грошах, виплатах, пільгах та контрактах</h2>
+        
+        <details open>
+            <summary>🎁 Соціальні гарантії та пільги військовослужбовців</summary>
+            <div style="padding: 12px 16px;">
+                <div class="benefit-card">
+                    <div class="benefit-title">💳 Кредитні пільги та проценти</div>
+                    <div>Звільнення від сплати штрафів, пені та процентів за користування кредитами (крім кредитів на житло/авто). Подається рапорт та довідка про службу (Ф7).</div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-title">🎖️ Пільги для учасників бойових дій (УБД)</div>
+                    <div>100% знижка на комунальні послуги в межах норм, безкоштовний проїзд у міському та міжміському транспорті, першочергове медичне обслуговування.</div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-title">🏠 Статус ВПО та житлові програми</div>
+                    <div>Оформлення виплат ВПО для родини, пільгове іпотечне кредитування за програмою «єОселя» (під 3% для військовослужбовців).</div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-title">🏖️ Матеріальна допомога на оздоровлення</div>
+                    <div>Виплачується 1 раз на рік у розмірі місячного грошового забезпечення під час виходу у щорічну основну відпустку.</div>
+                </div>
+            </div>
+        </details>
+
+        <details>
+            <summary>💵 Грошове забезпечення та зміна IBAN</summary>
+            <div style="padding: 12px 16px;">
+                <p>Для зміни банківських реквізитів подається рапорт на ім'я командира із доданою роздрукованою довідкою з реквізитами рахунку IBAN.</p>
+            </div>
+        </details>
+    </div>
+
+    <!-- ================= ХАБ 7 ================= -->
+    <div id="hub7" class="page-view">
+        <button class="nav-back-btn" onclick="openPage('home-page')">← Головне меню</button>
+        <h2>📞 7. Контакти та гарячі лінії</h2>
+        
+        <div class="phone-list">
+            <div class="phone-item">
+                <span>Служба психологічної підтримки ЗСУ:</span>
+                <a href="tel:1512" style="color:var(--accent-blue); font-weight:bold;">1512</a>[cite: 3]
+            </div>
+            <div class="phone-item">
+                <span>Гаряча лінія Сил ТрО ЗСУ:</span>
+                <a href="tel:0800507028" style="color:var(--accent-blue); font-weight:bold;">0 800 507-028</a>[cite: 3]
+            </div>
+            <div class="phone-item">
+                <span>Signal чат-бот Сил ТрО:</span>
+                <span style="color:var(--accent-green); font-weight:bold;">+38 (063) 106-72-06</span>[cite: 3]
+            </div>
+            <div class="phone-item">
+                <span>Психологічна підтримка Lifeline Ukraine:</span>
+                <a href="tel:7333" style="color:var(--accent-blue); font-weight:bold;">7333</a>[cite: 3]
+            </div>
+            <div class="phone-item">
+                <span>Безоплатна правнича допомога:</span>
+                <a href="tel:0800213103" style="color:var(--accent-blue); font-weight:bold;">0 800 213 103</a>[cite: 3]
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function openPage(pageId) {
+        document.querySelectorAll('.page-view').forEach(page => {
+            page.classList.remove('active');
+        });
+        document.getElementById(pageId).classList.add('active');
+        window.scrollTo(0, 0);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const checkboxes = document.querySelectorAll('#hub1 input[type="checkbox"]');
+        checkboxes.forEach((cb, index) => {
+            const state = localStorage.getItem('hub1_step_' + index);
+            if (state === 'true') {
+                cb.checked = true;
+                cb.closest('.checkbox-item').classList.add('done');
+            }
+            cb.addEventListener('change', (e) => {
+                localStorage.setItem('hub1_step_' + index, e.target.checked);
+                if(e.target.checked) {
+                    cb.closest('.checkbox-item').classList.add('done');
+                } else {
+                    cb.closest('.checkbox-item').classList.remove('done');
+                }
+                updateProgress();
+            });
+        });
+        updateProgress();
+    });
+
+    function updateProgress() {
+        const all = document.querySelectorAll('#hub1 input[type="checkbox"]');
+        const checked = document.querySelectorAll('#hub1 input[type="checkbox"]:checked');
+        const percentage = Math.round((checked.length / all.length) * 100) || 0;
+        
+        document.getElementById('progress-fill').style.width = percentage + '%';
+        document.getElementById('progress-text').innerText = percentage + '%';
+    }
+
+    function filterRole(role) {
+        document.querySelectorAll('.role-btn').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+
+        const items = document.querySelectorAll('#hub1 .checkbox-item');
+        items.forEach(item => {
+            if (role === 'all' || item.dataset.role === role) {
+                item.style.display = 'flex';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
