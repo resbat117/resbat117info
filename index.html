@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Навігатор Військовослужбовця В/Ч А4273</title>
+    <title>Єдине вікно підтримки військовослужбовця</title>
     <style>
         :root {
             --bg-color: #0f172a;
@@ -198,7 +198,7 @@
             white-space: pre-wrap;
         }
 
-        .phone-list {
+        .phone-list, .info-card-list {
             background: var(--card-bg);
             border-radius: 8px;
             padding: 12px 16px;
@@ -211,6 +211,19 @@
             border-bottom: 1px solid var(--border-color);
         }
         .phone-item:last-child { border-bottom: none; }
+
+        .benefit-card {
+            background: #0f172a;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 10px;
+        }
+        .benefit-title {
+            color: var(--accent-blue);
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
     </style>
 </head>
 <body>
@@ -220,8 +233,8 @@
     <!-- ================= ГОЛОВНЕ МЕНЮ ================= -->
     <div id="home-page" class="page-view active">
         <div class="header">
-            <h1>🪖 Електронний Навігатор В/Ч А4273</h1>
-            <p>Оберіть розділ для швидкого вирішення вашого питання</p>
+            <h1>🪖 Єдине вікно підтримки військовослужбовця</h1>
+            <p>Офіційний цифровий путівник В/Ч А4273</p>
         </div>
 
         <div class="hub-grid">
@@ -268,8 +281,8 @@
             <div class="hub-card" onclick="openPage('hub6')">
                 <div class="hub-icon">💰</div>
                 <div>
-                    <div class="hub-title">6. Питання по грошах, виплатах та контракти</div>
-                    <div class="hub-desc">Грошове забезпечення, додаткові виплати, заміна IBAN, довідки, контракт</div>
+                    <div class="hub-title">6. Питання по грошах, виплатах, пільгах та контрактах</div>
+                    <div class="hub-desc">Грошове забезпечення, пільги УБД/ВПО, кредити, заміна IBAN, контракти</div>
                 </div>
             </div>
 
@@ -471,4 +484,23 @@
                 </label>
                 <label class="checkbox-item red" data-role="commander">
                     <input type="checkbox" onchange="updateProgress()">
-                    <span><b>5.
+                    <span><b>5.2 (КОМАНДИР):</b> Особисто разом із бійцем здати сформовану папку в Штаб в/ч А4273.</span>
+                </label>
+            </div>
+        </details>
+
+        <!-- ЕТАП 6 -->
+        <details>
+            <summary>📍 ЕТАП 6: МТЗ, побут та адаптація/карантин</summary>
+            <div class="step-list">
+                <label class="checkbox-item red" data-role="commander">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>6.1 (КОМАНДИР):</b> Провести бійця до сержанта з МТЗ / старшини роти для перевірки/видачі речового майна та інвентарю.</span>
+                </label>
+                <label class="checkbox-item yellow" data-role="soldier">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>6.2 (КОМАНДИР/БІЄЦЬ):</b> У разі відсутності спальника, гігієнічних засобів чи форми — оформити заявку на видачу.</span>
+                </label>
+                <label class="checkbox-item red" data-role="commander">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span><b>6.3 (КОМАНДИР):</b> Розмістити військовослужбовця в розташуванні та довести розпорядок дня.</span>
