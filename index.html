@@ -221,63 +221,63 @@
     <div id="home-page" class="page-view active">
         <div class="header">
             <h1>🪖 Електронний Навігатор В/Ч А4273</h1>
-            <p>Офіційний цифровий путівник адаптації та підтримки</p>
+            <p>Оберіть розділ для швидкого вирішення вашого питання</p>
         </div>
 
         <div class="hub-grid">
             <div class="hub-card" onclick="openPage('hub1')">
                 <div class="hub-icon">🚪</div>
                 <div>
-                    <div class="hub-title">Хаб 1. Я тільки прибув у частину</div>
-                    <div class="hub-desc">Маршрутна карта, анкети, реквізити, тест «Адаптивність-200»</div>
+                    <div class="hub-title">1. Я тільки прибув у частину</div>
+                    <div class="hub-desc">Маршрутна карта прибуття, документи, анкети, тест «Адаптивність-200»</div>
                 </div>
             </div>
 
             <div class="hub-card" onclick="openPage('hub2')">
                 <div class="hub-icon">🏥</div>
                 <div>
-                    <div class="hub-title">Хаб 2. Здоров'я, ВЛК та поранення</div>
-                    <div class="hub-desc">Направлення на ВЛК, медична допомога, лікування</div>
+                    <div class="hub-title">2. Я захворів / Поранення / Потрібно на ВЛК</div>
+                    <div class="hub-desc">Порядок звернення до медпункту, рапорт на ВЛК, дії при пораненні та лікуванні</div>
                 </div>
             </div>
 
             <div class="hub-card" onclick="openPage('hub3')">
                 <div class="hub-icon">🧠</div>
                 <div>
-                    <div class="hub-title">Хаб 3. Психологічна підтримка (ППП)</div>
-                    <div class="hub-desc">Контакти психолога, підтримка, рівні права, розвантаження</div>
+                    <div class="hub-title">3. Мені важко психологічно / Кепсько почуваюся</div>
+                    <div class="hub-desc">Психологічна допомога (ППП), подолання стресу, адаптація, підтримка родин</div>
                 </div>
             </div>
 
             <div class="hub-card" onclick="openPage('hub4')">
                 <div class="hub-icon">🌴</div>
                 <div>
-                    <div class="hub-title">Хаб 4. Відпустки та сімейні обставини</div>
-                    <div class="hub-desc">Види відпусток, порядок подачі рапортів, допомога родині</div>
+                    <div class="hub-title">4. Хочу у відпустку / Сімейні обставини</div>
+                    <div class="hub-desc">Щорічні та сімейні відпустки, алгоритм та порядок подачі рапорту</div>
                 </div>
             </div>
 
             <div class="hub-card" onclick="openPage('hub5')">
                 <div class="hub-icon">⚖️</div>
                 <div>
-                    <div class="hub-title">Хаб 5. Права, рапорти та юридична допомога</div>
-                    <div class="hub-desc">Шаблони рапортів, захист прав, службові розслідування</div>
+                    <div class="hub-title">5. У мене конфлікт / Порушують мої права</div>
+                    <div class="hub-desc">Захист прав, оскарження дій, службові розслідування, шаблони рапортів</div>
                 </div>
             </div>
 
             <div class="hub-card" onclick="openPage('hub6')">
-                <div class="hub-icon">💳</div>
+                <div class="hub-icon">💰</div>
                 <div>
-                    <div class="hub-title">Хаб 6. Фінанси, виплати та контракти</div>
-                    <div class="hub-desc">Грошове забезпечення, довідки, оздоровчі, заміна IBAN</div>
+                    <div class="hub-title">6. Питання по грошах, виплатах та контракти</div>
+                    <div class="hub-desc">Грошове забезпечення, додаткові виплати, заміна IBAN, довідки, контракт</div>
                 </div>
             </div>
 
             <div class="hub-card" onclick="openPage('hub7')">
                 <div class="hub-icon">📞</div>
                 <div>
-                    <div class="hub-title">Хаб 7. Контакти та гарячі лінії</div>
-                    <div class="hub-desc">Службові телефони, МОУ, ГШ, ВСП, Lifeline Ukraine</div>
+                    <div class="hub-title">7. Контакти та гарячі лінії</div>
+                    <div class="hub-desc">Телефони служб частини, МОУ, ГШ, ВСП, чат-боти та юридична допомога</div>
                 </div>
             </div>
         </div>
@@ -289,7 +289,7 @@
         <button class="nav-back-btn" onclick="openPage('home-page')">← Головне меню</button>
 
         <div class="header">
-            <h1>🚪 Хаб 1. Я тільки прибув у частину</h1>
+            <h1>🚪 1. Я тільки прибув у частину</h1>
         </div>
 
         <div class="alert-box">
@@ -471,133 +471,4 @@
                 </label>
                 <label class="checkbox-item red" data-role="commander">
                     <input type="checkbox" onchange="updateProgress()">
-                    <span><b>5.2 (КОМАНДИР):</b> Особисто разом із бійцем здати сформовану папку в Штаб в/ч А4273.</span>
-                </label>
-            </div>
-        </details>
-
-        <!-- ЕТАП 6 -->
-        <details>
-            <summary>📍 ЕТАП 6: МТЗ, побут та адаптація/карантин</summary>
-            <div class="step-list">
-                <label class="checkbox-item red" data-role="commander">
-                    <input type="checkbox" onchange="updateProgress()">
-                    <span><b>6.1 (КОМАНДИР):</b> Провести бійця до сержанта з МТЗ / старшини роти для перевірки/видачі речового майна та інвентарю.</span>
-                </label>
-                <label class="checkbox-item yellow" data-role="soldier">
-                    <input type="checkbox" onchange="updateProgress()">
-                    <span><b>6.2 (КОМАНДИР/БІЄЦЬ):</b> У разі відсутності спальника, гігієнічних засобів чи форми — оформити заявку на видачу.</span>
-                </label>
-                <label class="checkbox-item red" data-role="commander">
-                    <input type="checkbox" onchange="updateProgress()">
-                    <span><b>6.3 (КОМАНДИР):</b> Розмістити військовослужбовця в розташуванні та довести розпорядок дня.</span>
-                </label>
-                <label class="checkbox-item red" data-role="commander">
-                    <input type="checkbox" onchange="updateProgress()">
-                    <div>
-                        <b>6.4 (КОМАНДИР):</b> Ознайомити бійця з режимом <b>первинної адаптації / карантину на перший тиждень</b>:
-                        <ul style="margin: 4px 0 0 16px; padding:0; font-size:0.9em; color:#cbd5e1;">
-                            <li>Обмеження самостійного виходу за територію</li>
-                            <li>Первинний контроль психологічного стану та фізичного самопочуття</li>
-                            <li>Входження у службовий ритм, вивчення обов'язків та закріпленої зброї/майна</li>
-                        </ul>
-                    </div>
-                </label>
-            </div>
-        </details>
-    </div>
-
-    <!-- ================= ХАБ 7 ================= -->
-    <div id="hub7" class="page-view">
-        <button class="nav-back-btn" onclick="openPage('home-page')">← Головне меню</button>
-        <h2>📞 Хаб 7. Офіційні Гарячі Лінії та Допомога</h2>
-        
-        <div class="phone-list">
-            <div class="phone-item">
-                <span>Служба психологічної підтримки ЗСУ:</span>
-                <a href="tel:1512" style="color:var(--accent-blue); font-weight:bold;">1512</a>
-            </div>
-            <div class="phone-item">
-                <span>Гаряча лінія Сил ТрО ЗСУ:</span>
-                <a href="tel:0800507028" style="color:var(--accent-blue); font-weight:bold;">0 800 507-028</a>
-            </div>
-            <div class="phone-item">
-                <span>Signal чат-бот Сил ТрО:</span>
-                <span style="color:var(--accent-green); font-weight:bold;">+38 (063) 106-72-06</span>
-            </div>
-            <div class="phone-item">
-                <span>Психологічна підтримка Lifeline Ukraine:</span>
-                <a href="tel:7333" style="color:var(--accent-blue); font-weight:bold;">7333</a>
-            </div>
-            <div class="phone-item">
-                <span>Безоплатна правнича допомога:</span>
-                <a href="tel:0800213103" style="color:var(--accent-blue); font-weight:bold;">0 800 213 103</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Заготовки для інших хабів -->
-    <div id="hub2" class="page-view"><button class="nav-back-btn" onclick="openPage('home-page')">← Головне меню</button><h2>🏥 Хаб 2. Здоров'я, ВЛК та поранення</h2><p>Розділ у процесі наповнення...</p></div>
-    <div id="hub3" class="page-view"><button class="nav-back-btn" onclick="openPage('home-page')">← Головне меню</button><h2>🧠 Хаб 3. Психологічна підтримка (ППП)</h2><p>Розділ у процесі наповнення...</p></div>
-    <div id="hub4" class="page-view"><button class="nav-back-btn" onclick="openPage('home-page')">← Головне меню</button><h2>🌴 Хаб 4. Відпустки та сімейні обставини</h2><p>Розділ у процесі наповнення...</p></div>
-    <div id="hub5" class="page-view"><button class="nav-back-btn" onclick="openPage('home-page')">← Головне меню</button><h2>⚖️ Хаб 5. Права, рапорти та юридична допомога</h2><p>Розділ у процесі наповнення...</p></div>
-    <div id="hub6" class="page-view"><button class="nav-back-btn" onclick="openPage('home-page')">← Головне меню</button><h2>💳 Хаб 6. Фінанси, виплати та контракти</h2><p>Розділ у процесі наповнення...</p></div>
-
-</div>
-
-<script>
-    function openPage(pageId) {
-        document.querySelectorAll('.page-view').forEach(page => {
-            page.classList.remove('active');
-        });
-        document.getElementById(pageId).classList.add('active');
-        window.scrollTo(0, 0);
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-        const checkboxes = document.querySelectorAll('#hub1 input[type="checkbox"]');
-        checkboxes.forEach((cb, index) => {
-            const state = localStorage.getItem('hub1_step_' + index);
-            if (state === 'true') {
-                cb.checked = true;
-                cb.closest('.checkbox-item').classList.add('done');
-            }
-            cb.addEventListener('change', (e) => {
-                localStorage.setItem('hub1_step_' + index, e.target.checked);
-                if(e.target.checked) {
-                    cb.closest('.checkbox-item').classList.add('done');
-                } else {
-                    cb.closest('.checkbox-item').classList.remove('done');
-                }
-                updateProgress();
-            });
-        });
-        updateProgress();
-    });
-
-    function updateProgress() {
-        const all = document.querySelectorAll('#hub1 input[type="checkbox"]');
-        const checked = document.querySelectorAll('#hub1 input[type="checkbox"]:checked');
-        const percentage = Math.round((checked.length / all.length) * 100) || 0;
-        
-        document.getElementById('progress-fill').style.width = percentage + '%';
-        document.getElementById('progress-text').innerText = percentage + '%';
-    }
-
-    function filterRole(role) {
-        document.querySelectorAll('.role-btn').forEach(btn => btn.classList.remove('active'));
-        event.target.classList.add('active');
-
-        const items = document.querySelectorAll('#hub1 .checkbox-item');
-        items.forEach(item => {
-            if (role === 'all' || item.dataset.role === role) {
-                item.style.display = 'flex';
-            } else {
-                item.style.display = 'none';
-            }
-        });
-    }
-</script>
-
-</body>
-</html>
+                    <span><b>5.
